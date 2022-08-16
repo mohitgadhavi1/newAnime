@@ -2,8 +2,8 @@ import  React,{useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchData} from "../redux/features/FetchDataSlice";
-import {searchData} from "../redux/features/FetchDataSlice"
+import {fetchData} from "../redux/slice/FetchDataSlice";
+import {searchData} from "../redux/slice/FetchDataSlice"
 
 
 

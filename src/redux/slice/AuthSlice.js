@@ -4,7 +4,7 @@ const initialState = {
   users: JSON.parse(localStorage.getItem("users")) || [],
   signinPage: true,
   logedinUser: JSON.parse(localStorage.getItem("logedinUser")) || null,
-  watchlist: [],
+
 };
 
 const AuthSlice = createSlice({
@@ -12,11 +12,9 @@ const AuthSlice = createSlice({
   initialState,
   reducers: {
     isLoggedin: (state, action) => {
-      console.log(action.payload);
+
       const status = action.payload;
-      if (status == "login") {
-        state.logedinUser = JSON.parse(localStorage.getItem("logedinUser"));
-      } else {
+  
         const updateUsers = state.users.map((user) => {
           if (user.email == state.logedinUser.email) {
             return {
@@ -27,10 +25,11 @@ const AuthSlice = createSlice({
           }
           return user;
         });
+        state.users =updateUsers
         localStorage.setItem("users", JSON.stringify(updateUsers));
         localStorage.removeItem("logedinUser");
         state.logedinUser = null;
-      }
+      
     },
     addUser: (state, action) => {
       console.log(action.payload);
@@ -52,21 +51,40 @@ const AuthSlice = createSlice({
       const logedinUser = state.users.find(
         (item) => item.email == user.email && item.password == user.password
       );
-      //    logedinUser ? state.login = true : state.login = false
-      logedinUser && (logedinUser.logedin = true);
-      logedinUser &&
+      logedinUser &&  (logedinUser.logedin = true);
+   
+      logedinUser &&   ( state.logedinUser = logedinUser)
         localStorage.setItem("logedinUser", JSON.stringify(logedinUser));
-      state.logedinUser = JSON.parse(localStorage.getItem("logedinUser"));
+      //JSON.parse(localStorage.getItem("logedinUser"));
+     
     },
     userWatchlist: (state, action) => {
-      const newWatchlist = state.watchlist;
       const tempItem = action.payload;
-   
-      state.watchlist.push(tempItem)
-      
+      const watchlist = state.logedinUser.watchlist
+      if (watchlist.length === 0) {
+        watchlist.push(tempItem)
+      } else {
+        const isThisAnimeAdded = watchlist.some((list) => list.id ===  tempItem.id);
+  
+        if (!isThisAnimeAdded) {
+          watchlist.push(tempItem)
+        }else{
+          console.log("same Data")
+          for( var i = 0; i < watchlist.length; i++){ 
+    
+            if ( watchlist[i].id === tempItem.id) { 
+        
+              watchlist.splice(i, 1); 
+            }
+          }
+        }
+      }  
+      state.logedinUser.watchlist = watchlist
+      localStorage.setItem("logedinUser", JSON.stringify(state.logedinUser));
     },
   },
 });
+
 export const {
   isLoggedin,
   addUser,

@@ -7,7 +7,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import IconButton from "@mui/material/IconButton";
-import { userWatchlist } from "../redux/features/AuthSlice";
+import { userWatchlist } from "../redux/slice/AuthSlice";
 
 
 

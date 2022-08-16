@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { checkUser, isLoggedin, opensigninPage, opensignupPage } from '../../redux/features/AuthSlice';
+import { checkUser, isLoggedin, opensigninPage, opensignupPage } from '../../redux/slice/AuthSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Copyright(props) {

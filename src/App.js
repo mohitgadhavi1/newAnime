@@ -14,7 +14,7 @@ function App() {
 
  
     // console.log( logedinUser)
-    // console.log(users )
+    console.log(users )
 
 
   return (

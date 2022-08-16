@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, isLoggedin, opensigninPage } from '../../redux/features/AuthSlice';
+import { addUser, isLoggedin, opensigninPage } from '../../redux/slice/AuthSlice';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { IconButton, InputAdornment } from '@mui/material';
 

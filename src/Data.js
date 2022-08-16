@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
-import { fetchedData} from "./redux/features/FetchDataSlice";
+import { fetchedData} from "./redux/slice/FetchDataSlice";
 import { useDispatch} from "react-redux";
 import Watchlist from "./components/Watchlist";
 
