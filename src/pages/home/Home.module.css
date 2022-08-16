@@ -1,0 +1,50 @@
+.mainWrapper{
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+    'header header  header '
+    'left middle  right';
+    grid-template-columns:1fr 1fr 1fr;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.header{
+    grid-area: header;
+    
+    border: 1px solid wheat ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    padding: 0 2% 0 2%;
+}
+
+
+.leftbar{
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+  padding-left:1% ;
+}
+.middlebar{
+    grid-area: middle;
+ border: 1px solid wheat;
+}
+.rightbar{
+    grid-area: right;
+
+}
+
+.inputbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+     width: 100%;
+    
+    /* background-color: rgb(5, 88, 88); */
+
+}
