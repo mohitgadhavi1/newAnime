@@ -23,7 +23,7 @@ function AnimeCard() {
   const data = useSelector((state) => state.FetchData.data);
   const logedinUser = useSelector((state) => state.Auth.logedinUser);
   const watchlist = useSelector(state => state.Auth.watchlist)
- 
+  console.log(watchlist)
  
 
   
@@ -50,13 +50,21 @@ const filteredData = tempFiltedData.filter(element => {
 
 
 const clickHandler =(e,item)=>{
-  e.preventDefault();
-  watchlist.map(item=>{
-    console.log(item)
-  })
+e.preventDefault();
+if(watchlist.length ===0){
   dispatch(userWatchlist(item))
+}
+  if(watchlist.length >=1){
+     watchlist.map(i=>{
  
+      if (i.id === item.id){
+        console.log("already exist")
+       }else{
+        dispatch(userWatchlist(item))
+       }
+    }
 
+  )}
  
 }
 

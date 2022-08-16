@@ -62,7 +62,7 @@ const AuthSlice = createSlice({
       const newWatchlist = state.watchlist;
       const tempItem = action.payload;
    
-      newWatchlist.push(tempItem)
+      state.watchlist.push(tempItem)
       
     },
   },
