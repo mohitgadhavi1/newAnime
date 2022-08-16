@@ -19,11 +19,12 @@ import { userWatchlist } from "../redux/slice/AuthSlice";
 
 function AnimeCard() {
   const dispatch = useDispatch();
-  const trackedElement = useRef();
+
   const searchedName = useSelector((state) => state.FetchData.searchedName);
   const filteredGenre = useSelector((state) => state.FetchData.filteredGenre);
   const data = useSelector((state) => state.FetchData.data);
   const logedinUser = useSelector((state) => state.Auth.logedinUser);
+  const watchlist = useSelector(state => state.Auth.logedinUser.watchlist)
 
   const tempFiltedData = [];
 
@@ -53,14 +54,7 @@ function AnimeCard() {
 
   return (
     <ImageList sx={{ width: "100%" }}>
-      <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader
-          component="div"
-         
-        >
-      
-        </ListSubheader>
-      </ImageListItem>
+
       {data &&
         ((filteredData.length > 0 && filteredData) || data).map((item) => {
           if (item.title.toLowerCase().includes(searchedName)) {
@@ -75,7 +69,11 @@ function AnimeCard() {
                 
                   onDragEnd={(e) => {
                     e.preventDefault();
-                    dispatch(userWatchlist(item));
+                    const isThisAnimeAdded = watchlist.some((list) => list.id ===  item.id);
+                    if (!isThisAnimeAdded){
+                      dispatch(userWatchlist(item));
+                    }
+                  
                   }}
                 />
                 <ImageListItemBar

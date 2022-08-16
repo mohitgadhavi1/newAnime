@@ -22,19 +22,17 @@ function Watchlist() {
 const dispatch = useDispatch()
 const data = useSelector((state) => state.FetchData.data);
 const logedinUser = useSelector((state) => state.Auth.logedinUser)
+const watchlist = useSelector((state) => state.Auth.logedinUser.watchlist)
 
-// useEffect(()=>{
-//   dispatch( userWatchlist(data))
-// },[data])
-
-  
-  //  console.log(dragItem);
 
 
   const clickHandler =(e,item)=>{
     e.preventDefault();
-  
-    dispatch(userWatchlist(item));
+    const isThisAnimeAdded = watchlist.some((list) => list.id ===  item.id);
+    if ( isThisAnimeAdded ){
+      dispatch(userWatchlist(item));
+    }
+    
    
   }
    
@@ -63,7 +61,14 @@ const logedinUser = useSelector((state) => state.Auth.logedinUser)
           srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
           alt={item.title}
           loading="lazy"
-      
+          onDragEnd={(e) => {
+            e.preventDefault();
+            const isThisAnimeAdded = watchlist.some((list) => list.id ===  item.id);
+            if (isThisAnimeAdded){
+              dispatch(userWatchlist(item));
+            }
+          
+          }}
          
         />
         <ImageListItemBar

@@ -5,7 +5,7 @@ const initialState = {
   // loading: false,
   searchedName: "",
   filteredGenre: [],
-  // error: "",
+  anchorEl : null
 };
 
 const FetchdataSlice = createSlice({
@@ -40,12 +40,16 @@ const FetchdataSlice = createSlice({
         state.filteredGenre.splice(index, 1); // 2nd parameter means remove one item only
       }
     },
+    openFilterMenu:(state,action)=>{
+     state.anchorEl = action.payload
+    }
 
   
   },
 });
 
 export const {
+  openFilterMenu,
   modifyWatchlist,
   fetchedData,
   searchData,

@@ -1,27 +1,45 @@
-import  React,{useEffect, useState} from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchData} from "../redux/slice/FetchDataSlice";
-import {searchData} from "../redux/slice/FetchDataSlice"
+import React, { useEffect, useState } from "react";
 
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { openFilterMenu, searchData } from "../redux/slice/FetchDataSlice";
+import { Divider, IconButton, InputBase, Paper, Tooltip } from "@mui/material";
+import { FaFilter } from "react-icons/fa";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Searchbar() {
-
-    
-    const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
+  const handleClick = (event) => {
+    dispatch(  openFilterMenu(event.currentTarget));
+  };
 
   return (
-    <TextField  
-       id="outlined-name"
-       label="What's on your Mind?"
-       size="small"
-       sx={{width:"80%",color:"#316B83", marginLeft:"2%"}}
-       onChange={(e)=>dispatch(searchData(e.target.value))}
-  
-  />
+    <Paper
+      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
+    >
+      <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+      <InputBase
+        id="outlined-name"
+        placeholder="     What's on your Mind?"
+        size="small"
+        sx={{ ml: 1, flex: 1 }}
+        onChange={(e) => dispatch(searchData(e.target.value))}
+      />
+      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+      <Tooltip title=" Filter ">
+        <IconButton
+          color="primary"
+          sx={{ p: "10px" }}
+          onClick={handleClick}
+          size="small"
+          // sx={{ ml: 2 }}
+        >
+          <FaFilter style={{ fontSize: "100%" }} />
+        </IconButton>
+      </Tooltip>
+    </Paper>
   );
 }
