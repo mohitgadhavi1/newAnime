@@ -70,7 +70,7 @@ export default function Signup() {
       logedin:true,
       watchlist:[]
     }));
-    dispatch(  isLoggedin("login"))
+
   };
 
   const users= useSelector((state) => state.Auth.users);

@@ -14,7 +14,7 @@ const AuthSlice = createSlice({
     isLoggedin: (state, action) => {
 
       const status = action.payload;
-  
+
         const updateUsers = state.users.map((user) => {
           if (user.email == state.logedinUser.email) {
             return {
@@ -30,12 +30,16 @@ const AuthSlice = createSlice({
         localStorage.removeItem("logedinUser");
         state.logedinUser = null;
       
+  
+      
+      
     },
     addUser: (state, action) => {
       console.log(action.payload);
-      console.log(state.users);
+     
       localStorage.setItem("logedinUser", JSON.stringify(action.payload));
-      //   state.logedinUser = action.payload
+      state.logedinUser = action.payload
+    
       const newUsers = state.users;
       newUsers.push(action.payload);
       localStorage.setItem("users", JSON.stringify(newUsers));
