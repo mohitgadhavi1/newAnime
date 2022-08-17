@@ -10,8 +10,10 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export default function Searchbar() {
   const dispatch = useDispatch();
+  const isFilterMenuOpen = useSelector((state) => state.FetchData.filterMenu);
+ 
   const handleClick = (event) => {
-    dispatch(  openFilterMenu(event.currentTarget));
+    dispatch(  openFilterMenu(!isFilterMenuOpen));
   };
 
   return (

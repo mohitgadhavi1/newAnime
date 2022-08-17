@@ -5,7 +5,7 @@ const initialState = {
   // loading: false,
   searchedName: "",
   filteredGenre: [],
-  anchorEl : null
+  filterMenu  : false
 };
 
 const FetchdataSlice = createSlice({
@@ -41,7 +41,7 @@ const FetchdataSlice = createSlice({
       }
     },
     openFilterMenu:(state,action)=>{
-     state.anchorEl = action.payload
+     state.filterMenu = action.payload
     }
 
   
