@@ -5,7 +5,7 @@ const initialState = {
   // loading: false,
   searchedName: "",
   filteredGenre: [],
-  filterMenu  : false
+  filterMenu  : null
 };
 
 const FetchdataSlice = createSlice({

@@ -13,7 +13,7 @@ export default function Searchbar() {
   const isFilterMenuOpen = useSelector((state) => state.FetchData.filterMenu);
  
   const handleClick = (event) => {
-    dispatch(  openFilterMenu(!isFilterMenuOpen));
+    dispatch(  openFilterMenu(event.currentTarget));
   };
 
   return (
