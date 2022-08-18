@@ -29,7 +29,8 @@ const dispatch = useDispatch();
                       };
                     })
                   );
-                });}catch (error) {
+                })
+              }catch (error) {
                   console.error(error);
                 }
             };
@@ -37,7 +38,7 @@ const dispatch = useDispatch();
     
         fetchData();
         
-        dispatch(fetchedData(data));
+        // dispatch(fetchedData(data));
       }, []);
 
       useEffect(() => {

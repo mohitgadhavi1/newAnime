@@ -48,7 +48,7 @@ export default function Signup() {
     password:"",
   })
 
-  let emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+  let emailRegex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g);
   let passwordRegex = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
   let emailError = isBlurred.email && (formData.email.length> 0) && !emailRegex.test(formData.email);
   //Between 8- 10 characters, at least 1 uppercase and lowercase letter,1 number and 1 special character:
