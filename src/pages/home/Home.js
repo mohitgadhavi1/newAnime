@@ -3,11 +3,9 @@ import styles from "./Home.module.css";
 import Header from "./Header";
 import AnimeCard from "../../components/AnimeCard";
 import Watchlist from "../../components/Watchlist";
-
 import Searchbar from "../../components/Searchbar";
 import Filter from "../../components/Filter";
 
-import { useSelector } from "react-redux";
 
 function Home() {
 
