@@ -52,8 +52,10 @@ function AnimeCard() {
   
   };
 
+  
+
   return (
-    <ImageList sx={{ width: "100%" }}>
+    <ImageList variant="masonry" rowHeight={250} gap={8} cols={3} sx={{ width: "100%" }}>
 
       {data &&
         ((filteredData.length > 0 && filteredData) || data).map((item) => {
@@ -62,7 +64,7 @@ function AnimeCard() {
               <ImageListItem draggable key={item.id}>
                 <img
                   src={`${item.image}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  srcSet={`${item.image}?w=161&fit=crop&auto=format&dpr=2 2x`}
                   alt={item.title}
                   loading="lazy"
  
@@ -77,6 +79,7 @@ function AnimeCard() {
                   }}
                 />
                 <ImageListItemBar
+               
                   title={item.title}
                   draggable="false"
                   subtitle={`popularity: ${item.popularity}`}

@@ -18,7 +18,7 @@ export default function Searchbar() {
 
   return (
     <Paper
-      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
+      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 ,backgroundColor:'#F1F1F1'}}
     >
       <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
         <SearchIcon />

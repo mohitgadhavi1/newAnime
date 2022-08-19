@@ -65,20 +65,21 @@ function Filter() {
         component="div"
         sx={{
           display: "flex",
-          overflowX: "visible",
-          overflowY: "hidden",
-
-          width: "450px",
-
-          margin: "10px",
+          overflow: "hidden",
+         
+          background:"none",
+          width: "410px",
+          border:'2px solid #E2DCC8',
+          borderRadius:'4px',
+          
           justifyContent: "left",
-
+          
           alignItems: "center",
-          height: "70px",
+          height: "60px",
           margin: "10px",
         }}
       >
-        <Typography> Filters:</Typography>
+        {/* <Typography> Filters:</Typography> */}
         {filteredGenre.map((item, index) => {
           return (
             <Chip

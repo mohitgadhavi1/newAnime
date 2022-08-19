@@ -40,15 +40,15 @@ const watchlist = useSelector((state) => state.Auth.logedinUser.watchlist)
     
 
   return (
-    <div className={styles.Watchlist} >
+    <div className={styles.watchlist} >
       <h1>Watchlist:</h1>
 
    
-    <ImageList sx={{ width:"100%"}}>
-    <ImageListItem key="Subheader" cols={2}>
+    <ImageList  cols={3} sx={{ width:"100%"}}>
+   
   
 
-    </ImageListItem>
+   
     {logedinUser.watchlist &&
   (logedinUser.watchlist).map((item) => {
     
